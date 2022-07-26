@@ -6,8 +6,9 @@ authors = ["Marcel Stolin <mstolin@mailbox.org>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-jupyterlab = "^3.4.4"
 pandas = "^1.4.3"
+notebook = "^6.4.12"
+matplotlib = "^3.5.2"
 
 [tool.poetry.dev-dependencies]
 
