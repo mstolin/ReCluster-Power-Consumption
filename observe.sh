@@ -11,12 +11,12 @@ interval="${2:-5}" # in seconds
 runtime="${3:-30} second" # how long, in seconds
 endtime=$(date -ud "$runtime" +%s)
 
-header="Time, Total, Today, Power, Voltage, Current"
+header="Time,Power"
 data=""
 
 while [[ $(date -u +%s) -le $endtime ]]; do
     sleep $interval
-    resp=$(curl -s ${url} | jq -r '.StatusSNS | [.Time, .ENERGY.Total, .ENERGY.Today, .ENERGY.Power, .ENERGY.Voltage, .ENERGY.Current] | @csv')
+    resp=$(curl -s ${url} | jq -r '.StatusSNS | [.Time, .ENERGY.Power] | @csv')
     data="${data}\n${resp}"
 done <<< $data
 
